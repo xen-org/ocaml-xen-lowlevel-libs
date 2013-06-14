@@ -138,6 +138,18 @@ type domaininfo = {
   handle : int array;
 }
 
+type runstateinfo = {
+	state : int32;
+	missed_changes: int32;
+	state_entry_time : int64;
+	time0 : int64;
+	time1 : int64;
+	time2 : int64;
+	time3 : int64;
+	time4 : int64;
+	time5 : int64;
+}
+
 type domain_create_flag = CDF_HVM | CDF_HAP
 
 val domain_create : handle -> int32 -> domain_create_flag list -> string -> domid
@@ -178,6 +190,21 @@ external domain_get_pfn_list : handle -> domid -> nativeint -> nativeint array =
 (** DEPRECATED.  Avoid using this, as it does not correctly account
     for PFNs without a backing MFN. *)
 
+external domain_set_timer_mode: handle -> domid -> int -> unit = "stub_xc_domain_set_timer_mode"
+external domain_set_hpet: handle -> domid -> int -> unit = "stub_xc_domain_set_hpet"
+external domain_set_vpt_align: handle -> domid -> int -> unit = "stub_xc_domain_set_vpt_align"
+
+external domain_send_s3resume: handle -> domid -> unit = "stub_xc_domain_send_s3resume"
+external domain_get_acpi_s_state: handle -> domid -> int = "stub_xc_domain_get_acpi_s_state"
+
+external domain_trigger_power: handle -> domid -> unit = "stub_xc_domain_trigger_power"
+external domain_trigger_sleep: handle -> domid -> unit = "stub_xc_domain_trigger_sleep"
+
+external domain_suppress_spurious_page_faults: handle -> domid -> unit = "stub_xc_domain_suppress_spurious_page_faults"
+
+external domain_get_runstate_info : handle -> int -> runstateinfo = "stub_xc_get_runstate_info"
+
+external domain_set_target: handle -> domid -> domid -> unit = "stub_xc_domain_set_target"
 
 
 (** {3 Domain lifecycle ops} *)
