@@ -214,6 +214,9 @@ external domain_set_machine_address_size: handle -> domid -> int -> unit
 external domain_get_machine_address_size: handle -> domid -> int
        = "stub_xc_domain_get_machine_address_size"
 
+external get_boot_cpufeatures: handle
+                        -> (int32 * int32 * int32 * int32 * int32 * int32 * int32 * int32)
+       = "stub_xc_get_boot_cpufeatures"
 external domain_cpuid_set: handle -> domid -> (int64 * (int64 option))
                         -> string option array
                         -> string option array
