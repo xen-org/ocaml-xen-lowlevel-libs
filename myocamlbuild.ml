@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 5025c5020bca580da405fcab60e1bbd9) *)
+(* DO NOT EDIT (digest: 6f534dc707ad1ed807fe15d161b4eed0) *)
 module OASISGettext = struct
 (* # 21 "src/oasis/OASISGettext.ml" *)
 
@@ -565,8 +565,8 @@ let package_default =
           (["oasis_library_xentoollog_cclib"; "ocamlmklib"; "c"],
             [(OASISExpr.EBool true, S [A "-lxenctrl"; A "-lxenguest"])])
        ];
-     includes = [("test", ["lib"]); ("lwt", ["lib"])];
-     }
+     includes = [("test", ["lib"]); ("lwt", ["lib"])]
+  }
   ;;
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default package_default;;
