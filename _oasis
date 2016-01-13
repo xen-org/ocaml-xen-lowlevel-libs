@@ -7,10 +7,6 @@ License:     LGPL-2.1 with OCaml linking exception
 Plugins:     META (0.3)
 BuildTools:  ocamlbuild
 
-Flag xenguest42
-  Description:        build the xenguest helper for xen-4.2
-  Default:            true
-
 Library xenctrl
   CompiledObject:     best
   Path:               lib
@@ -37,25 +33,6 @@ Library xentoollog
   Modules:            Xentoollog
   CSources:           xentoollog_stubs.c, caml_xentoollog.h, caml_levels.h
   CCLib:              -lxenctrl -lxenguest
-
-Library xenguest42
-  Build$:             flag(xenguest42)
-  CompiledObject:     best
-  Install:            false
-  Path:               xenguest-4.2
-  Findlibname:        xenguest42
-  Modules:            Xenguest
-  CSources:           xenguest_stubs.c
-  CCLib:              -lxenguest -lxenctrl -lxenstore
-
-Executable xenguest
-  Build$:             flag(xenguest42)
-  CompiledObject:     best
-  Path:               xenguest-4.2
-  MainIs:             xenguest_main.ml
-  Custom:             true
-  Install:            false
-  BuildDepends:       xenctrl, xenguest42
 
 Executable test_hvm_check_pvdriver
   CompiledObject:     best
